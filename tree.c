@@ -1,15 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "utils.h"
 
-// Produces a file which content is the output of ls
+#define FILENAME "list.txt"
+
+/// Produces a file which content is the output of ls
 int ls(char *filename) {
+	/* system("ls > " + FILENAME); */
+	return 0;
+}
 
+// Low level version of ls
+int low_ls(char *filename) {
+	return 0;
 }
 
 // Returns an array of strings with the file names. 
 // The first position of the array is a string containing the number of file names.
 char** get_files() {
 
+	return NULL;
 }
 
 // Prints the file names in a tree fashion
@@ -23,5 +33,6 @@ void print_list(char** file_list) {
 }
 
 int main() {
-
+	printf("%s\n", concat("hola", " adios"));
+	return 0;
 }

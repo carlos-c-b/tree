@@ -6,7 +6,7 @@
 
 /// Produces a file which content is the output of ls
 int ls(char *filename) {
-	/* system("ls > " + FILENAME); */
+	
 	return 0;
 }
 
@@ -33,6 +33,8 @@ void print_list(char** file_list) {
 }
 
 int main() {
-	printf("%s\n", concat("hola", " adios"));
+	char *s;
+	int n = concat("hola", "adios", &s);
+	printf("%s\n", s);
 	return 0;
 }

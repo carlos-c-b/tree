@@ -6,9 +6,10 @@
  *
  * @param t1 The first string. It must be non-null
  * @param t2 The second string. It must be non-null
+ * @param dst Pointer to the destination string
  *
- * @return A pointer to the newly allocated string, or NULL if allocation fails
+ * @return Length of the string
  */
-char *concat(const char *t1, const char *t2);
+int concat(const char *t1, const char *t2, char **dst);
 
 #endif

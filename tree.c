@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include "utils.h"
 
@@ -6,7 +7,18 @@
 
 /// Produces a file which content is the output of ls
 int ls(char *filename) {
-	exec("ls > text.txt");	
+	system("ls > ls.tmp");	
+	FILE *fd = fopen("ls.tmp", "r");
+	const int COUNT = 1000;
+	char buf[COUNT];
+
+	while(fgets(buf, COUNT, fd) != NULL) {
+		printf("%s", buf);
+	}
+	printf("\n");
+
+	fclose(fd);
+
 	return 0;
 }
 
@@ -33,7 +45,7 @@ void print_list(char** file_list) {
 }
 
 int main() {
-	ls();
+	ls(".");
 
 	return 0;
 }

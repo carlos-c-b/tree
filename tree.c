@@ -6,7 +6,7 @@
 
 /// Produces a file which content is the output of ls
 int ls(char *filename) {
-	
+	exec("ls > text.txt");	
 	return 0;
 }
 
@@ -33,12 +33,7 @@ void print_list(char** file_list) {
 }
 
 int main() {
-	char *s;
-	int n = concat("hola", " adios", &s);
-	if(s == NULL) return 0;
-	print_string(s, n);
+	ls();
 
-
-	free(s);
 	return 0;
 }

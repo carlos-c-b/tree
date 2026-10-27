@@ -10,8 +10,8 @@ int ls(char *filename) {
 	return 0;
 }
 
-// Low level version of ls
-int low_ls(char *filename) {
+// simple ls implementation
+int myls(char *filename) {
 	return 0;
 }
 
@@ -34,7 +34,11 @@ void print_list(char** file_list) {
 
 int main() {
 	char *s;
-	int n = concat("hola", "adios", &s);
-	printf("%s\n", s);
+	int n = concat("hola", " adios", &s);
+	if(s == NULL) return 0;
+	print_string(s, n);
+
+
+	free(s);
 	return 0;
 }

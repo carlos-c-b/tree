@@ -14,6 +14,8 @@
  */
 int concat(const char *src1, const char *src2, char **dst);
 
+char* sconcat(const char *src1, const char *src2);
+
 void print_string(const char *str, int length);
 
 #endif

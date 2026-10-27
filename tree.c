@@ -3,21 +3,22 @@
 #include <stdlib.h>
 #include "utils.h"
 
-#define FILENAME "list.txt"
+#define FILENAME "ls.tmp"
 
 /// Produces a file which content is the output of ls
 int ls(char *filename) {
-	system("ls > ls.tmp");	
-	FILE *fd = fopen("ls.tmp", "r");
+	system(sconcat("ls > ", FILENAME));	
+	FILE *fd = fopen(FILENAME, "r");
 	const int COUNT = 1000;
 	char buf[COUNT];
 
 	while(fgets(buf, COUNT, fd) != NULL) {
-		printf("%s", buf);
 	}
+	printf("%s", buf);
 	printf("\n");
 
 	fclose(fd);
+	system("rm ls.tmp");
 
 	return 0;
 }

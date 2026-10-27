@@ -17,6 +17,16 @@ int concat(const char *src1, const char *src2, char **dst) {
 	return length;
 }
 
+char* sconcat(const char *src1, const char *src2) {
+	int l1 = strlen(src1);
+	int l2 = strlen(src2);
+	char *dst = malloc(l1+l2+1);
+	strcpy(dst, src1);
+	strcpy(&dst[l1], src2);
+	dst[l1+l2] = '\0';
+	return dst;
+}
+
 void print_string(const char *str, int length) {
 	for(int i = 0; i < length; i++) printf("%c", str[i]);
 	printf("\n");

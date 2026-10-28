@@ -3,25 +3,34 @@
 #include <stdlib.h>
 #include "utils.h"
 
-#define FILENAME "ls.tmp"
 
-/// Produces a file which content is the output of ls
-int ls(char *filename) {
-	system(sconcat("ls > ", FILENAME));	
-	FILE *fd = fopen(FILENAME, "r");
-	const int COUNT = 1000;
-	char buf[COUNT];
+// Produces a file which content is the output of ls, reads it and deletes it
+ int ls(char *filename) { 
+ 	char *tmpfilename = sconcat(3, ".ls-", filename, ".tmp"); // E.g. .ls-dir1.tmp
+ 	char *cmd = sconcat(2, "ls --file-type > ", tmpfilename);	 
+ 	system(cmd); 
+ 	free(cmd); 
 
-	while(fgets(buf, COUNT, fd) != NULL) {
-	}
-	printf("%s", buf);
-	printf("\n");
 
-	fclose(fd);
-	system("rm ls.tmp");
 
-	return 0;
-}
+ 	FILE *fd = fopen(tmpfilename, "r"); 
+ 	const int COUNT = 100; 
+ 	char buf[COUNT];
+
+ 	while(fgets(buf, COUNT, fd) != NULL) {
+ 		for(int i = 0; buf[i] != '\n'; i++) {
+ 			printf("%c", buf[i]);
+ 		}
+ 		printf("\n");
+ 	}
+	
+
+ 	fclose(fd);
+ 	system(sconcat(2, "rm ", tmpfilename));
+	free(tmpfilename);
+
+ 	return 0;
+ }
 
 // simple ls implementation
 int myls(char *filename) {
@@ -47,6 +56,5 @@ void print_list(char** file_list) {
 
 int main() {
 	ls(".");
-
 	return 0;
 }
